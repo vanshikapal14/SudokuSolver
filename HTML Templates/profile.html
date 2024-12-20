@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <?php
+        // Session start and user authentication checks
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: login.html');
+            exit();
+        }
+
+        // Fetch user data from database
+        $userId = $_SESSION['user_id'];
+        // ... (Database query to fetch user details)
+        // Replace this placeholder with your actual database query and fetching logic
+        $userData = array(
+            'username' => 'johndoe',
+            'email' => 'johndoe@example.com'
+        );
+        ?>
+
+        <p><strong>Username:</strong> <?php echo $userData['username']; ?></p>
+        <p><strong>Email:</strong> <?php echo $userData['email']; ?></p>
+        <a href="logout.php">Logout</a>
+    </div>
+</body>
+</html>
